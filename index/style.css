@@ -18,6 +18,11 @@ body {
 }
 
 /*********************/
+
+#title {
+	cursor: pointer;
+}
+
 .background {
   background-size: cover;
   background-repeat: no-repeat;
