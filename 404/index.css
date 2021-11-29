@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+/* * {cursor: none;} /* pour chacher le curseur pour trailer */ 
+
+html, body {   
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  font-family: 'Roboto' !important; 
+  color: white;
+  font-size: 9px;
+  cursor: url("../../assets/images/souris.cur"), pointer;
+}
+
+footer
+{
+position:absolute;
+bottom:0;
+width:100%;
+padding-top:50px;
+height:140px;
+} 
+
+h1
+{
+  color: #fff;
+  font-size: 300%;
+  text-align: center;
+  -webkit-animation: sentence 6s;
+  animation: sentence 6s;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+}
+
+@keyframes sentence
+{
+  0%
+  {
+    opacity: 0.8;
+  }
+  50%
+  {
+    opacity: 0.2;
+  }
+  100%
+  {
+    opacity: 0.8;
+  }
+}
+
+/*******************/
+#magic {
+
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  display: block;
+  top: 0;
+  left: 0;
+  z-index: -9999;
+}

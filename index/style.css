@@ -148,7 +148,6 @@ h1 {
 
 p {
 	font-size: 30px;
-	padding-left: 10vw;
 	margin: 7px 0;
 	color:  #f1f1f1;
 }
@@ -162,6 +161,7 @@ button {
 	cursor: pointer;
 	border: none;
 	transition-duration: 1s;
+	margin: 0 auto;
 }
 
 button:hover {
