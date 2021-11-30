@@ -1,0 +1,199 @@
+:root {
+  --fond : #0c273c;
+  --rouge : #a80000;
+}
+
+
+/*************************/
+*, ::before, ::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+body {
+	background: var(--fond);
+	height : 100vh;
+	font-family: Arial,Helvetica,sans-serif;
+	overflow: hidden;
+}
+
+/*********************/
+
+#title {
+	cursor: pointer;
+}
+
+.background {
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  overflow: hidden;
+  will-change: transform;
+  backface-visibility: hidden;
+  height: 130vh;
+  position: fixed;
+  width: 100%;
+  transform: translateY(30vh);
+  transition: all 1.2s cubic-bezier(0.22, 0.44, 0, 1);
+}
+.background:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.background:first-child {
+  transform: translateY(-15vh);
+}
+.background:first-child .content-wrapper {
+  transform: translateY(15vh);
+}
+.background:nth-child(2) {
+  background-image: url('../discovery/fight.png');
+}
+.background:nth-child(3) {
+  background-image: url('../discovery/dialogue.png');
+}
+.background:nth-child(4) {
+  background-image: url('../discovery/fond.png');
+}
+.background:nth-child(5) {
+  background-image: url('../index/team.png');
+}
+/* Set stacking context of slides */
+.background:nth-child(1) {
+  z-index: 5;
+}
+.background:nth-child(2) {
+  z-index: 4;
+}
+.background:nth-child(3) {
+  z-index: 3;
+}
+.background:nth-child(4) {
+  z-index: 2;
+}
+.background:nth-child(5) {
+  z-index: 1;
+}
+.content-wrapper {
+  height: 100vh;
+  display: flex;	
+  flex-flow: column nowrap;
+  color: #fff;
+  font-family: Montserrat;
+  text-transform: uppercase;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(40vh);
+  will-change: transform;
+  backface-visibility: hidden;
+  transition: all 1.7s cubic-bezier(0.22, 0.44, 0, 1);
+}
+.content-title {
+  font-size: 12vh;
+  line-height: 1.4;
+}
+.background.up-scroll {
+  transform: translate3d(0, -15vh, 0);
+}
+.background.up-scroll .content-wrapper {
+  transform: translateY(15vh);
+}
+.background.up-scroll + .background {
+  transform: translate3d(0, 30vh, 0);
+}
+.background.up-scroll + .background .content-wrapper {
+  transform: translateY(30vh);
+}
+.background.down-scroll {
+  transform: translate3d(0, -130vh, 0);
+}
+.background.down-scroll .content-wrapper {
+  transform: translateY(40vh);
+}
+.background.down-scroll + .background:not(.down-scroll) {
+  transform: translate3d(0, -15vh, 0);
+}
+.background.down-scroll + .background:not(.down-scroll) .content-wrapper {
+  transform: translateY(15vh);
+}
+
+
+/******************* vague ************************/
+
+.accueil {
+	height: 100%;
+	width : 100%;
+	background: #0c273c;
+}
+
+@media screen and (max-width : 450px) {
+	.accueil {
+		height: 85vh;
+	}
+}
+
+.fond-curvy {
+	width: 100%;
+	position: absolute;
+	left: 0;
+	bottom:  5%;
+	display: block;
+
+}
+
+.contenu {
+	position: relative;
+	z-index : 1000;
+}
+
+
+h1 {
+	font-size: 90px;
+	padding: 200px 0 0 10vw;
+	position: relative;
+	text-align: center;
+	color:  #f1f1f1;
+}
+
+p {
+	font-size: 30px;
+	margin: 7px 0;
+	color:  #f1f1f1;
+}
+
+button {
+	margin: 20px 0 0 10vw;
+	padding: 12px;
+	font-size: 12px;
+	width: 150px;
+	border-radius: 5px;
+	cursor: pointer;
+	border: none;
+	transition-duration: 1s;
+	margin: 0 auto;
+}
+
+button:hover {
+	color: var(--rouge);
+}
+
+.laptop {
+	width: 70%;
+	position: absolute;
+	right: 12%;
+}
+
+
+/*************** gif ***************/
+
+.gif {
+  width: 30%;
+}

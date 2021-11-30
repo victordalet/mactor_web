@@ -24,7 +24,7 @@ body {
 }
 
 .background {
-  background-size: cover;
+  background-size: 100%;
   background-repeat: no-repeat;
   background-position: center center;
   overflow: hidden;
@@ -59,14 +59,20 @@ body {
 .background:nth-child(3) {
   background-image: url('../index/travail.jpg');
 }
+.background:nth-child(4) {
+  background-image: url('../index/team.png');
+}
 /* Set stacking context of slides */
 .background:nth-child(1) {
-  z-index: 3;
+  z-index: 4;
 }
 .background:nth-child(2) {
-  z-index: 2;
+  z-index: 3;
 }
 .background:nth-child(3) {
+  z-index: 2;
+}
+.background:nth-child(4) {
   z-index: 1;
 }
 .content-wrapper {
@@ -147,7 +153,7 @@ h1 {
 	font-size: 90px;
 	padding: 200px 0 0 10vw;
 	position: relative;
-	right: 8px;
+	text-align: center;
 	color:  #f1f1f1;
 }
 
@@ -251,6 +257,7 @@ strong {
   left: -25%;
 }
 .canvas_copy_title {
+  text-shadow: #fff 1px 1px, #fff -1px 1px, #fff -1px -1px, #fff 1px -1px;
   font-size: 62px;
   display: block;
   transform: translateX(-80px);
@@ -330,3 +337,18 @@ strong {
     opacity: 1;
   }
 }
+
+
+/*********** TEAM *********/
+.team {
+	border-radius: 20px;
+	transition: transform .7s ease-in-out;
+	display: flex;
+}
+
+.team:hover {
+  transform: rotate(360deg);
+  border-radius: 40px;
+}
+
+
