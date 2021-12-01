@@ -462,4 +462,11 @@ a:hover {
   
 }
 
+/************* PHONE ***************/
+.mobile {
+  text-align: center;
+}
 
+.mobile_img {
+  width: 100%;
+}
