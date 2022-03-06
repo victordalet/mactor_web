@@ -1,89 +1,52 @@
-// ------------- VARIABLES ------------- //
-var ticking = false;
-var isFirefox = (/Firefox/i.test(navigator.userAgent));
-var isIe = (/MSIE/i.test(navigator.userAgent)) || (/Trident.*rv\:11\./i.test(navigator.userAgent));
-var scrollSensitivitySetting = 30;  
-var slideDurationSetting = 600; 
-var currentSlideNumber = 0;
-var totalSlideNumber = $(".background").length;
+document.getElementById("an").innerHTML = (new Date().getFullYear()); 
+/**************************************/
 
-// ------------- DETERMINE DELTA/SCROLL DIRECTION ------------- //
-function parallaxScroll(evt) {
-  if (isFirefox) {
-    //Set delta for Firefox
-    delta = evt.detail * (-120);
-  } else if (isIe) {
-    //Set delta for IE
-    delta = -evt.deltaY;
-  } else {
-    //Set delta for all other browsers
-    delta = evt.wheelDelta;
+
+const slidingNewsLetters1 = document.querySelector('.title1')
+const slidingNewsLetters2 = document.querySelector('.title2')
+const slidingNewsLetters3 = document.querySelector('.title3')
+const slidingNewsLetters4 = document.querySelector('.title4')
+
+
+window.addEventListener('scroll',()=>{
+  const {scrollTop,clientHeight} = document.documentElement;
+  const topElementToTopViewport1 = slidingNewsLetters1.getBoundingClientRect().top;
+  const topElementToTopViewport2 = slidingNewsLetters2.getBoundingClientRect().top;
+  const topElementToTopViewport3 = slidingNewsLetters3.getBoundingClientRect().top;
+  const topElementToTopViewport4 = slidingNewsLetters4.getBoundingClientRect().top;
+
+  if(scrollTop > (scrollTop+topElementToTopViewport1).toFixed()-clientHeight*0.5){
+    slidingNewsLetters1.classList.add('active1')
   }
 
-  if (ticking != true) {
-    if (delta <= -scrollSensitivitySetting) {
-      //Down scroll
-      ticking = true;
-      if (currentSlideNumber !== totalSlideNumber - 1) {
-        currentSlideNumber++;
-        nextItem();
-      }
-      slideDurationTimeout(slideDurationSetting);
-    }
-    if (delta >= scrollSensitivitySetting) {
-      //Up scroll
-      ticking = true;
-      if (currentSlideNumber !== 0) {
-        currentSlideNumber--;
-      }
-      previousItem();
-      slideDurationTimeout(slideDurationSetting);
-    }
+  if(scrollTop > (scrollTop+topElementToTopViewport2).toFixed()-clientHeight*0.5){
+    slidingNewsLetters2.classList.add('active2')
   }
-}
 
-// ------------- SET TIMEOUT TO TEMPORARILY "LOCK" SLIDES ------------- //
-function slideDurationTimeout(slideDuration) {
-  setTimeout(function() {
-    ticking = false;
-  }, slideDuration);
-}
+  if(scrollTop > (scrollTop+topElementToTopViewport3).toFixed()-clientHeight*0.5){
+    slidingNewsLetters3.classList.add('active3')
+  }
 
-// ------------- ADD EVENT LISTENER ------------- //
-var mousewheelEvent = isFirefox ? "DOMMouseScroll" : "wheel";
-window.addEventListener(mousewheelEvent, _.throttle(parallaxScroll, 60), false);
-var x = document.body.scrollTop
-if (x>20) {
-  nextItem();
-}
-// ------------- SLIDE MOTION ------------- //
-function nextItem() {
-  var $previousSlide = $(".background").eq(currentSlideNumber - 1);
-  $previousSlide.removeClass("up-scroll").addClass("down-scroll");
-}
+  if(scrollTop > (scrollTop+topElementToTopViewport4).toFixed()-clientHeight*0.5){
+    slidingNewsLetters4.classList.add('active4')
+  }
+})
 
-function previousItem() {
-  var $currentSlide = $(".background").eq(currentSlideNumber);
-  $currentSlide.removeClass("down-scroll").addClass("up-scroll");
-}
-
-
-
-/************************ LOADING *************************/
-
-const titre = document.querySelector("p");
-const img = document.querySelector("img");
+/*******************************/
+const b = document.querySelector(".container-title");
 const TL1 = new TimelineMax({pause : true});
 
 TL1
-.from(titre,1, {y: -100, opacity : 0} )
-.from(img,1, {x: +500,opacity : 0}, '-=0.4' )
-
+.from(b,1, {x: -1000, opacity : 0})
 
 TL1.play()
 
-
-/**************** YEARS ******************/
-document.getElementById("an").innerHTML = (new Date().getFullYear());  
-
-
+/**********************/
+document.addEventListener("click",function (e){
+   if(e.target.classList.contains("gallery-item")){
+        const src = e.target.getAttribute("src");
+        document.querySelector(".modal-img").src = src;
+        const myModal = new bootstrap.Modal(document.getElementById('gallery-modal'));
+        myModal.show();
+   }
+ })
